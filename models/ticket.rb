@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require_relative("./customer")
 
 class Ticket
 
@@ -34,6 +35,20 @@ class Ticket
     values = [@customer_id, @film_id, @id]
     SqlRunner.run(sql, values)
   end
+
+  def self.all()
+    sql = "SELECT * FROM tickets"
+    results = SqlRunner.run(sql)
+    return results.map{|ticket| Ticket.new(ticket)}
+  end
+
+  def customer()
+    sql = "SELECT * FROM customers WHERE id = $1"
+    values = [@customer_id]
+    customer = SqlRunner.run(sql, values).first
+    return Customer.new(customer)
+  end
+
 
 
 end
