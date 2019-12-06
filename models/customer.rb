@@ -36,6 +36,16 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM customers
+    WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    customer_hash = results.first
+    customer = Customer.new(customer_hash)
+    return customer
+  end
+
   def self.all()
     sql = "SELECT * FROM customers"
     results = SqlRunner.run(sql)
