@@ -1,5 +1,7 @@
 require_relative("../db/sql_runner")
 require_relative("./film")
+require_relative("./customer")
+require_relative("./ticket")
 
 class Customer
 
@@ -60,6 +62,16 @@ class Customer
     film_results = SqlRunner.run(sql, values)
     return film_results.map{|film| Film.new(film)}
   end
+
+  # def ticket_price_from_customer_funds(id)
+  #   id = [@id]
+  #   return @funds - ticket.price
+  # end
+
+  def ticket_price_from_customer_funds(price_of_ticket)A
+    return @funds - price_of_ticket
+  end
+
 
 
 end
