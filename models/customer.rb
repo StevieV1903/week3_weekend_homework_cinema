@@ -68,7 +68,7 @@ class Customer
   #   return @funds - ticket.price
   # end
 
-  def ticket_price_from_customer_funds(price_of_ticket)A
+  def ticket_price_from_customer_funds(price_of_ticket)
     return @funds - price_of_ticket
   end
 
